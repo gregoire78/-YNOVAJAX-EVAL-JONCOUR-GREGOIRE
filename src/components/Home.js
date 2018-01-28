@@ -36,6 +36,7 @@ export default class Home extends Component {
   componentDidMount() {
     moviesList.map((id) => {
       this.getMovie(id);
+      return 0;
     })
   }
 
@@ -49,7 +50,7 @@ class Movie extends Component {
     return (
       <div className="col-3 p-3">
         <div className="card bg-dark text-white">
-          <img className="card-img" src={this.props.name.Poster} alt="Card image" />
+          <img className="card-img" src={this.props.name.Poster} alt={this.props.name.Title} />
           <div className="card-img-overlay">
             <h5 className="card-title">{this.props.name.Title}</h5>
           </div>
