@@ -60,8 +60,8 @@ class App extends Component {
 
           <main role="main" className="container">
             <div className="starter-template">
-              <h1>Uncle SAM - Stream App Movie</h1>
-              <p className="lead">Votre application de visionnage de films patriote</p>
+              <h1>L'oncle SAM <span role="img" aria-label="">🎬</span> Stream App Movie</h1>
+              <p className="lead"><span role="img" aria-label="">🎥</span> Venez chez l'oncle Sam regarder un p'tit film <span role="img" aria-label="">😋</span></p>
             </div>
             <Switch>
               <Route path="/connexion" component={Login} />
