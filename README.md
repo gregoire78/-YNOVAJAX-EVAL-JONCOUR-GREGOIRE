@@ -1,3 +1,19 @@
+## Stream App Movie
+
+Projet d'entrainement à react
+
+pour executer avec dowker windows :
+install
+```bash
+docker run -it --rm --name node -p 80:3000 -v ${pwd}:/usr/src/app -w /usr/src/app node npm install
+CHOKIDAR_USEPOLLING=true npm start
+```
+execution projet
+```bash
+docker run -it --rm --name node -p 80:3000 -v ${pwd}:/usr/src/app -w /usr/src/app node bash
+CHOKIDAR_USEPOLLING=true npm start
+```
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
