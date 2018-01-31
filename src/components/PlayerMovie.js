@@ -9,7 +9,6 @@ class PlayerMovie extends Component {
         super(props);
 
         this.state = {
-            isAuthenticated: false,
             movie: ''
         };
 

@@ -53,7 +53,7 @@ class Movie extends Component {
     return (
       <div className="col-3 p-3">
         <Route render={({history}) => (
-          <div className="card bg-dark text-white" onClick={() => history.push({
+          <div className="card bg-dark text-white movie-card" onClick={() => history.push({
             pathname: `/player/${this.props.movie.imdbID}`,
             poster: this.props.movie.Poster
           })}>

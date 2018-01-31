@@ -6,6 +6,12 @@ body {
   text-align: center;
 }
 
-.card-img-overlay {
+.movie-card .card-img-overlay {
   background-color: #00000078;
+}
+.movie-card:hover .card-img-overlay {
+  background-color: #44444478;
+}
+.movie-card:hover {
+  cursor: pointer;
 }

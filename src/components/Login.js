@@ -36,11 +36,12 @@ export default class Login extends Component {
           "password": this.state.password
         })
       })
-      .then(function (response) {
+      .then((response) => {
         return response.json();
       })
-      .then(function (data) {
-        localStorage.setItem('token', data.token);
+      .then((data) => {
+        sessionStorage.setItem('token', data.token);
+        this.props.action();
       }).catch((error) => {
         console.error(error);
       });
@@ -49,7 +50,7 @@ export default class Login extends Component {
   render() {
     return (
       <div>
-        <form className="form-signin" onSubmit={(event) => this.handleSubmit(event)}>
+        <form className="form-signin" onSubmit={this.handleSubmit}>
           <h1 className="h3 mb-3 font-weight-normal">Connexion chez SAM</h1>
           <div className="form-group">
             <label htmlFor="inputEmail" className="sr-only">Email</label>

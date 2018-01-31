@@ -4,7 +4,8 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom';
 import Home from './Home';
 import Login from './Login';
@@ -14,13 +15,25 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
-  
     this.state = {
-      isAuthenticated: false
-    };
+      isAuthenticated : false
+    }
+    this.handler = this.handler.bind(this)
+    this.handlerLogout = this.handlerLogout.bind(this)
   }
 
-  
+  handler() {
+    this.setState({
+      isAuthenticated: true
+    })
+    return alert("you are logged !")
+  }
+  handlerLogout() {
+    this.setState({
+      isAuthenticated: false
+    })
+    return alert("you are log out !")
+  }
 
   render() {
     // make link active
@@ -43,7 +56,11 @@ class App extends Component {
 
             <div className="collapse navbar-collapse" id="navbarsExampleDefault">
               <ul className="navbar-nav mr-auto">
-                <ListItemLink className="nav-link" to="/connexion" text="Connexion"/>
+                {
+                  this.state.isAuthenticated ?
+                    <ListItemLink className="nav-link" to="/logout" text="Déconnexion" onClick={this.handlerLogout}/>:
+                    <ListItemLink className="nav-link" to="/connexion" text="Connexion"/>
+                }
                 <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
                     <Route exact path="/" children={({ match }) => (
@@ -63,9 +80,11 @@ class App extends Component {
               <h1>L'oncle SAM <span role="img" aria-label="">🎬</span> Stream App Movie</h1>
               <p className="lead"><span role="img" aria-label="">🎥</span> Venez chez l'oncle Sam regarder un p'tit film <span role="img" aria-label="">😋</span></p>
             </div>
+
             <Switch>
-              <Route path="/connexion" component={Login} />
+              <Route path="/connexion" render={(props)=>(this.state.isAuthenticated ? <Redirect to="/"/> : <Login action={this.handler} {...props} />)}/>
               <Route path="/player/:id" component={PlayerMovie} />
+              <Route exact path="/logout" component={Home} />
               <Route exact path="/" component={Home} />
               <Route render={() => <h1>Page not found</h1>} />
             </Switch>  
