@@ -6,7 +6,6 @@ pour executer avec dowker windows :
 install
 ```bash
 docker run -it --rm --name node -p 80:3000 -v ${pwd}:/usr/src/app -w /usr/src/app node npm install
-CHOKIDAR_USEPOLLING=true npm start
 ```
 execution projet
 ```bash
