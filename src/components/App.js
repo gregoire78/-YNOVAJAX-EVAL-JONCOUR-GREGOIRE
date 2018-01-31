@@ -1,4 +1,3 @@
-//CHOKIDAR_USEPOLLING=true npm start
 import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
@@ -26,13 +25,13 @@ class App extends Component {
     this.setState({
       isAuthenticated: true
     })
-    return alert("you are logged !")
+    return alert("Vous êtes connecté !")
   }
   handlerLogout() {
     this.setState({
       isAuthenticated: false
     })
-    return alert("you are log out !")
+    return alert("Vous êtes déconnecté !")
   }
 
   render() {
@@ -84,7 +83,7 @@ class App extends Component {
             <Switch>
               <Route path="/connexion" render={(props)=>(this.state.isAuthenticated ? <Redirect to="/"/> : <Login action={this.handler} {...props} />)}/>
               <Route path="/player/:id" component={PlayerMovie} />
-              <Route exact path="/logout" component={Home} />
+              <Route exact path="/logout" render={()=><Redirect to="/"/>} />
               <Route exact path="/" component={Home} />
               <Route render={() => <h1>Page not found</h1>} />
             </Switch>  
