@@ -10,7 +10,7 @@ docker run -it --rm --name node -p 80:3000 -v ${pwd}:/usr/src/app -w /usr/src/ap
 execution projet
 ```bash
 docker run -it --rm --name node -p 80:3000 -v ${pwd}:/usr/src/app -w /usr/src/app node bash
-CHOKIDAR_USEPOLLING=true npm start
+root@cccdb5de7200:/usr/src/app# CHOKIDAR_USEPOLLING=true npm start
 ```
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
