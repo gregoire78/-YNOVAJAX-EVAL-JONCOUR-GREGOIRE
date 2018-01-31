@@ -2,8 +2,9 @@
 
 Projet d'entrainement à react
 
-pour executer avec dowker windows :
-install
+pour executer avec docker 🐳 windows :
+
+installation projet
 ```bash
 docker run -it --rm --name node -p 80:3000 -v ${pwd}:/usr/src/app -w /usr/src/app node npm install
 ```
