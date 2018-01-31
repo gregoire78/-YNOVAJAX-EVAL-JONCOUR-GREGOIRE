@@ -41,6 +41,7 @@ export default class Login extends Component {
       })
       .then((data) => {
         sessionStorage.setItem('token', data.token);
+        sessionStorage.setItem('email', this.state.email);
         this.props.action();
       }).catch((error) => {
         console.error(error);

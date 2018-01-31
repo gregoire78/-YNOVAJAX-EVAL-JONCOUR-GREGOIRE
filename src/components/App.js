@@ -17,17 +17,20 @@ class App extends Component {
     this.state = {
       isAuthenticated : false
     }
-    this.handler = this.handler.bind(this)
+    this.handlerLogin = this.handlerLogin.bind(this)
     this.handlerLogout = this.handlerLogout.bind(this)
   }
 
-  handler() {
+  handlerLogin() {
+    /* set auth to true */
     this.setState({
       isAuthenticated: true
     })
     return alert("Vous êtes connecté !")
   }
+  
   handlerLogout() {
+    /* set auth to false */
     this.setState({
       isAuthenticated: false
     })
@@ -55,7 +58,7 @@ class App extends Component {
 
             <div className="collapse navbar-collapse" id="navbarsExampleDefault">
               <ul className="navbar-nav mr-auto">
-                {
+                {/* switch entre deconnexion connexion bouton */
                   this.state.isAuthenticated ?
                     <ListItemLink className="nav-link" to="/logout" text="Déconnexion" onClick={this.handlerLogout}/>:
                     <ListItemLink className="nav-link" to="/connexion" text="Connexion"/>
@@ -71,6 +74,13 @@ class App extends Component {
                     )}/>
                 </li>
               </ul>
+              {/* affiche email de la personne connectée */
+                this.state.isAuthenticated
+                  ? <span className="navbar-text">
+                      {sessionStorage.getItem('email')}
+                    </span>
+                  : ""
+              }
             </div>
           </nav>
 
@@ -81,7 +91,7 @@ class App extends Component {
             </div>
 
             <Switch>
-              <Route path="/connexion" render={(props)=>(this.state.isAuthenticated ? <Redirect to="/"/> : <Login action={this.handler} {...props} />)}/>
+              <Route path="/connexion" render={(props)=>(this.state.isAuthenticated ? <Redirect to="/"/> : <Login action={this.handlerLogin} {...props} />)}/>
               <Route path="/player/:id" component={PlayerMovie} />
               <Route exact path="/logout" render={()=><Redirect to="/"/>} />
               <Route exact path="/" component={Home} />
