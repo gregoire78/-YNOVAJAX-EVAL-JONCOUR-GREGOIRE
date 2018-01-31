@@ -15,7 +15,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isAuthenticated : false
+      isAuthenticated : sessionStorage.getItem('token') ? true : false
     }
     this.handlerLogin = this.handlerLogin.bind(this)
     this.handlerLogout = this.handlerLogout.bind(this)
@@ -26,15 +26,16 @@ class App extends Component {
     this.setState({
       isAuthenticated: true
     })
-    return alert("Vous êtes connecté !")
+    //return alert("Vous êtes connecté !")
   }
   
   handlerLogout() {
     /* set auth to false */
+    sessionStorage.clear();
     this.setState({
       isAuthenticated: false
     })
-    return alert("Vous êtes déconnecté !")
+    //return alert("Vous êtes déconnecté !")
   }
 
   render() {
