@@ -1,3 +1,4 @@
+//CHOKIDAR_USEPOLLING=true npm start
 import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
@@ -7,6 +8,7 @@ import {
 } from 'react-router-dom';
 import Home from './Home';
 import Login from './Login';
+import PlayerMovie from './PlayerMovie';
 import './App.css';
 
 class App extends Component {
@@ -63,6 +65,7 @@ class App extends Component {
             </div>
             <Switch>
               <Route path="/connexion" component={Login} />
+              <Route path="/player/:id" component={PlayerMovie} />
               <Route exact path="/" component={Home} />
               <Route render={() => <h1>Page not found</h1>} />
             </Switch>  
